@@ -1,0 +1,46 @@
+<h1>Hi <%= session[:player_name] %></h1>
+<h1>You are welcome with your <%= session[:money] %></h1>
+
+
+
+ Dealer's card : 
+ <ul>
+  <% session[:dealer_card].each do |card| %>
+    <li><%=  card.to_s %></li>
+  <% end   %>
+</ul>
+
+<br/>
+
+ Player's card : 
+ <ul>
+  <% session[:player_card].each do |card| %>
+    <li><%=  card.to_s %></li>
+  <% end   %>
+</ul>
+
+<br/>
+Player get <%= calculate_total(session[:player_card]) %>
+<br/>
+
+
+<p> Here we go </p>
+
+
+<% if @show_hit_or_stay_btn %>
+  <form action="/game/player/hit" method=post>
+    <input type="submit" value="hit" class="btn" />
+  </form>
+
+
+  <form action="/game/player/stay" method=post>
+    <input type="submit" value="stay" class="btn" />
+  </form>
+
+<% end %>
+
+
+
+
+
+
