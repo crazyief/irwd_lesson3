@@ -3,39 +3,43 @@
 
 
 
- Dealer's card : 
- <ul>
-  <% session[:dealer_card].each do |card| %>
-    <li><%=  card.to_s %></li>
-  <% end   %>
-</ul>
+<div class="well">
+
+   <h4>Dealer's card : </h4>
+    <% session[:dealer_card].each do |card| %>
+      <%= card_image(card) %>  
+    <% end   %>  
+
+</div>
+
 
 <br/>
 
- Player's card : 
- <ul>
-  <% session[:player_card].each do |card| %>
-    <li><%=  card.to_s %></li>
-  <% end   %>
-</ul>
+<div class="well">
+   <h4>Player's card : </h4> 
+        <% session[:player_card].each do |card| %>
+        <%= card_image(card) %>      
+        <% end   %>
+</div>
+
+
 
 <br/>
-Player get <%= calculate_total(session[:player_card]) %>
+<h4>Player get <%= calculate_total(session[:player_card])%> </h4>
 <br/>
-
-
-<p> Here we go </p>
 
 
 <% if @show_hit_or_stay_btn %>
-  <form action="/game/player/hit" method=post>
-    <input type="submit" value="hit" class="btn" />
-  </form>
+  <div>
+    <form id="hit_form" action="/game/player/hit" method=post>
+      <input type="submit" value="hit" class="btn btn-warning btn-primary btn-lg" />
+    </form>
 
 
-  <form action="/game/player/stay" method=post>
-    <input type="submit" value="stay" class="btn" />
-  </form>
+    <form id="stay_form" action="/game/player/stay" method=post>
+      <input type="submit" value="stay" class="btn btn-success" />
+    </form>
+</div>
 
 <% end %>
 
